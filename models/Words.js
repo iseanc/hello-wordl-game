@@ -18,7 +18,7 @@ Words.init(
         theme_id: {
             type: DataTypes.INTEGER,
             references: {
-                model: 'gallery',
+                model: 'theme',
                 key: 'id',
             },
         },
