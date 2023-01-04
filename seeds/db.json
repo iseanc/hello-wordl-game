@@ -27,7 +27,7 @@
         { "key": "n" },
         { "key": "m" }
     ],
-    "responses": [
+    "words": [
         { "id": 1, "word": "branch" },
         { "id": 2, "word": "button" },
         { "id": 3, "word": "export" },

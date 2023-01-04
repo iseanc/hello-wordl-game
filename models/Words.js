@@ -15,7 +15,7 @@ Words.init(
             type: DataTypes.STRING,
             allowNull: true,
         },
-        gallery_id: {
+        theme_id: {
             type: DataTypes.INTEGER,
             references: {
                 model: 'gallery',
