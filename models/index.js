@@ -5,4 +5,5 @@ const Theme = require('./Theme');
 
 module.exports = {
   User,
+  Theme,
 };
