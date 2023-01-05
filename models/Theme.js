@@ -1,8 +1,7 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
-class Theme extends Model {
-}
+class Theme extends Model {}
 
 Theme.init(
   {
