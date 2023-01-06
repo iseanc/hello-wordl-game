@@ -10,6 +10,6 @@ const gameRoutes = require('./game-routes.js');
 
 // URL path for user management
 router.use('/users', userRoutes);
-router.use('/game',gameRoutes);
+router.use('/game', gameRoutes);
 
 module.exports = router;
