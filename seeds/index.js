@@ -1,5 +1,6 @@
 const seedTheme = require('./theme-seeds');
 const seedWords = require('./words-data');
+const seedDictionary = require('./dictionary-seeds');
 
 const sequelize = require('../config/connection');
 
@@ -12,6 +13,9 @@ const seedAll = async () => {
 
   await seedWords();
   console.log('\n----- WORDS SEEDED -----\n');
+
+  await seedDictionary();
+  console.log('\n----- DICTIONARY SEEDED -----\n');
 
   process.exit(0);
 };

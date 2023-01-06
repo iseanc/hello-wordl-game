@@ -1,6 +1,7 @@
 const User = require('./User');
 const Theme = require('./Theme');
 const Words = require('./Words');
+const Dictionary = require('./Dictionary');
 
 // Add Sequelize associations (hasOne, hasMany, etc) here
 
@@ -17,4 +18,5 @@ module.exports = {
   User,
   Theme,
   Words,
+  Dictionary,
 };
