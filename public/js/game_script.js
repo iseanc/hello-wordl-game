@@ -9817,26 +9817,6 @@ const dictionary = [
   "triose"
 ];
 
-// 5 letter lengths
-// const targetWords = [
-//   "venom",
-//   "veins",
-//   "files",
-//   "fills",
-// ];
-
-// const dictionary = [
-//   "filly",
-//   "fully",
-//   "viral",
-//   "feral",
-//   "venom",
-//   "veins",
-//   "files",
-//   "fills",
-// ]
-
-// const WORD_LENGTH = 6;
 const WORD_LENGTH = 6;
 const FLIP_ANIMATION_DURATION = 500;
 const DANCE_ANIMATION_DURATION = 500;
@@ -9846,7 +9826,7 @@ const guessGrid = document.querySelector("[data-guess-grid]");
 // const offsetFromDate = new Date(2023, 0, 1);
 // const msOffset = Date.now() - offsetFromDate;
 // const dayOffset = msOffset / 1000 / 60 / 60 / 24;
-// const targetWord = targetWords[Math.random()];
+
 const targetWord = targetWords[Math.floor(Math.random() * targetWords.length)]
 
 startInteraction();

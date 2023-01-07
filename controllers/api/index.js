@@ -6,7 +6,8 @@ const { User, Dictionary, Theme, Words } = require('../../models');
 const path = require('path');
 // Routes to manage User authentication activities (logon, new user, etc)
 const userRoutes = require('./user-routes');
-const gameRoutes = require('./game-routes.js');
+// const gameRoutes = require('./game-routes.js');
+const gameRoutes = require('./game-routes-SEANC-WIP.js');
 
 // URL path for user management
 router.use('/users', userRoutes);
