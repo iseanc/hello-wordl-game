@@ -20,8 +20,8 @@ A word-guessing game
 
 What are the steps required to install your project? 
 * npm i
-* node seeds
-* npm start
+* node seeds/index.js
+* node server.js
 
 ## Usage
 
