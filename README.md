@@ -35,10 +35,6 @@ See the application running live here:
 
 [Hello, Wordl!](https://hello-wordl.herokuapp.com/)
 
-or
-
-[Hello, Wordl!](https://git.heroku.com/hello-wordl.git)
-
 ## Usage
 
 `How does it work?`  After installing, the user will be directed to the Hello Wordl Game homepage where you see the game board, keyboard, and navigation links.  
