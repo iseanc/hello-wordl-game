@@ -9835,6 +9835,7 @@ async function startGame() {
   const response = await fetch('/api/game/my-word');
   if (response.ok) {
     const fetchedWord = await response.json();
+    // if (targetWord.ok) {
     startInteraction(fetchedWord);
   } else {
     alert(targetWord.statusText);
@@ -9842,6 +9843,7 @@ async function startGame() {
 }
 
 startGame();
+// startInteraction();
 
 async function startInteraction(fetchedWord) {
   targetWord = fetchedWord.word;
@@ -9850,7 +9852,7 @@ async function startInteraction(fetchedWord) {
   document.addEventListener("keydown", handleKeyPress);
 }
 
-function stopInteraction(fetchedWord) {
+function stopInteraction() {
   document.removeEventListener("click", handleMouseClick);
   document.removeEventListener("keydown", handleKeyPress);
 }
@@ -9874,7 +9876,7 @@ function handleMouseClick(e) {
 
 function handleKeyPress(e) {
   if (e.key === "Enter") {
-    submitGuess(targetWord);
+    submitGuess();
     return;
   }
 
