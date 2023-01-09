@@ -1,5 +1,5 @@
 const seedTheme = require('./theme-seeds');
-const seedWords = require('./words-data');
+const seedWords = require('./words-seeds');
 const seedDictionary = require('./dictionary-seeds');
 
 const sequelize = require('../config/connection');
