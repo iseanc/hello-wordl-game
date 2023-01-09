@@ -42,13 +42,13 @@ router.get('/my-dictionary', async (req, res) => {
   });
 });
 
-// Load themes
-router.get('/my-theme', async (req, res) => {
+// // Load themes
+// router.get('/my-theme', async (req, res) => {
   
-  //Render the 'homepage' Handlebars.js template.
-  res.render('homepage', {
-    loggedIn: req.session.loggedIn,
-  });
-});
+//   //Render the 'homepage' Handlebars.js template.
+//   res.render('homepage', {
+//     loggedIn: req.session.loggedIn,
+//   });
+// });
 
 module.exports = router;
