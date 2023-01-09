@@ -12,12 +12,32 @@ A word-guessing game
 
 `What did you learn?`  A better and more thorough understanding of how each file is interlinkined, and how the smallest mistakes can make or break the application
 
+## Table of Contents
+
+
+- [Installation](#installation)
+- [Live Deployment](#live-deployment)
+- [Usage](#usage)
+- [Credits](#credits)
+- [License](#license)
+
+
 ## Installation
 
 `What are the steps required to install your project?` 
 * npm i
 * node seeds/index.js
 * node server.js
+
+## Live Deployment
+
+See the application running live here: 
+
+[Hello, Wordl!](https://hello-wordl.herokuapp.com/)
+
+or
+
+[Hello, Wordl!](https://git.heroku.com/hello-wordl.git)
 
 ## Usage
 
