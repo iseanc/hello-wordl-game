@@ -4,10 +4,10 @@ const router = require('express').Router();
 const { User, Dictionary, Theme, Words } = require('../../models');
 // NodeJS module for filepaths
 const path = require('path');
-// Routes to manage User authentication activities (logon, new user, etc)
+// Route to manage User authentication activities
 const userRoutes = require('./user-routes');
-// const gameRoutes = require('./game-routes.js');
-const gameRoutes = require('./game-routes-SEANC-WIP.js');
+// routes for game data
+const gameRoutes = require('./game-routes.js');
 
 // URL path for user management
 router.use('/users', userRoutes);
