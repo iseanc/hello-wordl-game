@@ -9778,11 +9778,14 @@ const guessGrid = document.querySelector("[data-guess-grid]");
 // const msOffset = Date.now() - offsetFromDate;
 // const dayOffset = msOffset / 1000 / 60 / 60 / 24;
 
+// variable to store game solution word
 let targetWord;
 
-const fetchPromise = fetch('/api/game/my-word');
+// request a solution word from the server
+const fetchWord = fetch('/api/game/my-word');
 
-fetchPromise.then(response => {
+// process the fetch() promise response
+fetchWord.then(response => {
   if (!response.ok) {
     throw new Error(`HTTP error: ${response.status}`);
   }
@@ -9868,14 +9871,26 @@ function submitGuess() {
     return word + tile.dataset.letter;
   }, "");
 
-  if (!dictionary.includes(guess)) {
-    showAlert("Not in word list");
-    shakeTiles(activeTiles);
-    return;
-  }
+  // Request word matching "guess" from dictionary on server
+  const fetchDictionaryWord = fetch(`/api/game/dictionary/${guess}`);
 
-  stopInteraction();
-  activeTiles.forEach((...params) => flipTile(...params, guess));
+  fetchDictionaryWord.then(response => {
+    if (!response.ok) {
+      throw new Error(`HTTP error: ${response.status}`);
+    }
+    return response.json();
+  })
+  .then((data) => {
+    // actions if dictionary lookup returns "false"
+    if (data === false) {
+      showAlert("Not in word list");
+      shakeTiles(activeTiles);
+      return;
+    }
+    // execute these actions no matter what
+    stopInteraction();
+    activeTiles.forEach((...params) => flipTile(...params, guess));
+  })
 }
 
 function flipTile(tile, index, array, guess) {
