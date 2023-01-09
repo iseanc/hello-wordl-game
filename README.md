@@ -42,7 +42,7 @@ See the application running live here:
 ![Homepage](assets/images/Screenshot%202023-01-08%20at%2010.54.14%20AM.png)
 
 
-Click 'Login', and you'll be promted to either signup or login.  
+Click 'Login', and you'll be prompted to either signup or login.  
 
 ![Login](assets/images/Screenshot%202023-01-08%20at%2010.41.44%20AM.png)
 
