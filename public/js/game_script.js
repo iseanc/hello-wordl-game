@@ -9831,26 +9831,38 @@ const guessGrid = document.querySelector("[data-guess-grid]");
 
 let targetWord;
 
-async function startGame() {
-  const response = await fetch('/api/game/my-word');
-  if (response.ok) {
-    const fetchedWord = await response.json();
-    startInteraction(fetchedWord);
-  } else {
-    alert(targetWord.statusText);
+// async function startGame() {
+//   const response = await fetch('/api/game/my-word');
+//   if (response.ok) {
+//     const fetchedWord = await response.json();
+//     startInteraction(fetchedWord);
+//   } else {
+//     alert(targetWord.statusText);
+//   }
+// }
+
+// startGame();
+
+const fetchPromise = fetch('/api/game/my-word');
+
+fetchPromise.then(response => {
+  if (!response.ok) {
+    throw new Error(`HTTP error: ${response.status}`);
   }
-}
+  return response.json();
+})
+.then((data) => {
+  targetWord = data.word;
+  startInteraction(data.word);
+})
 
-startGame();
-
-async function startInteraction(fetchedWord) {
-  targetWord = fetchedWord.word;
+function startInteraction() {
   console.log('startInteraction targetWord = ', targetWord);
   document.addEventListener("click", handleMouseClick);
   document.addEventListener("keydown", handleKeyPress);
 }
 
-function stopInteraction(fetchedWord) {
+function stopInteraction() {
   document.removeEventListener("click", handleMouseClick);
   document.removeEventListener("keydown", handleKeyPress);
 }
