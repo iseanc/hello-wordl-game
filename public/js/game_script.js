@@ -1,52 +1,3 @@
-// const targetWords = [
-// "branch",
-// "button",
-// "export",
-// "failed",
-// "hidden",
-// "import",
-// "linked",
-// "module",
-// "return",
-// "search",
-// "status",
-// "update",
-// "system",
-// "switch",
-// "submit",
-// "source",
-// "server",
-// "select",
-// "secret",
-// "schema",
-// "secure",
-// "screen",
-// "repair",
-// "remote",
-// "random",
-// "reader",
-// "output",
-// "online",
-// "object",
-// "moment",
-// "margin",
-// "letter",
-// "length",
-// "launch",
-// "domain",
-// "create",
-// "column",
-// "course",
-// "bright",
-// "career",
-// "banana"
-// ];
-
-const targetWords = [
-  "banana",
-  "papaya",
-];
-
 const dictionary = [
   "people",
   "should",
@@ -9827,21 +9778,7 @@ const guessGrid = document.querySelector("[data-guess-grid]");
 // const msOffset = Date.now() - offsetFromDate;
 // const dayOffset = msOffset / 1000 / 60 / 60 / 24;
 
-// const targetWord = targetWords[Math.floor(Math.random() * targetWords.length)]
-
 let targetWord;
-
-// async function startGame() {
-//   const response = await fetch('/api/game/my-word');
-//   if (response.ok) {
-//     const fetchedWord = await response.json();
-//     startInteraction(fetchedWord);
-//   } else {
-//     alert(targetWord.statusText);
-//   }
-// }
-
-// startGame();
 
 const fetchPromise = fetch('/api/game/my-word');
 

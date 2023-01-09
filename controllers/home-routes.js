@@ -4,8 +4,7 @@ const { User } = require('../models');
 // Load the home page
 router.get('/', async (req, res) => {
   
-  //Render the 'homepage' Handlebars.js template.
-  // res.render('homepage', {
+  //Render the 'game' Handlebars.js template.
     res.render('game', {
     loggedIn: req.session.loggedIn,
   });
