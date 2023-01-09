@@ -3,49 +3,62 @@ A word-guessing game
 
 ## Description
 
-- What was your motivation? 
-* To demonstrate to potential employers our ability to create a full stack, fully functional and interactive web application as a team.
+`What was your motivation?`  To demonstrate to potential employers our ability to create a full stack, fully functional and interactive web application as a team.  
 
-- Why did you build this project? 
-* As a group, we agreed on building an application that would stimulate the mind in a fun and challenging new way, by modifying a game-concept that was already familiar, and making it our own.
+`Why did you build this project?`  As a group, we agreed on building an application that would stimulate the mind in a fun and challenging new way, by modifying a game-concept that was already familiar, and making it our own.
 
-- What problem does it solve?
-* In a world that moves so fast, people need a mental escape.  And with Hello-Wordl, you'll get just that.  
+`What problem does it solve?`  In a world that moves so fast, people need a mental escape.  And with Hello-Wordl, you'll get just that.  
 
 
-- What did you learn?
-* A clear and more thorough understanding of how each file is interlinkined, and how the smallest mistakes can make or break the application
+`What did you learn?`  A better and more thorough understanding of how each file is interlinkined, and how the smallest mistakes can make or break the application
 
 ## Installation
 
-What are the steps required to install your project? 
+`What are the steps required to install your project?` 
 * npm i
 * node seeds/index.js
 * node server.js
 
 ## Usage
 
-Provide instructions and examples for use. Include screenshots as needed.
+`How does it work?`  After installing, the user will be directed to the Hello Wordl Game homepage where you see the game board, keyboard, and navigation links.  
 
-To add a screenshot, create an `assets/images` folder in your repository and upload your screenshot to it. Then, using the relative filepath, add it to your README using the following syntax:
+![Homepage](assets/images/Screenshot 2023-01-08 at 10.54.14 AM.png)
 
-    ```md
-    ![alt text](assets/images/screenshot.png)
-    ```
+Click 'Login', and you'll be promted to either signup or login.  
+
+![Login](assets/images/Screenshot 2023-01-08 at 10.41.44 AM.png)
+
+Once the user data is entered, you'll be directed back to the homepage and you can now play the game. You have 6 chances to guess the 6-letter 'target-word' to win the game.  If you type a word that is not in the games dictionary, the gameboard "shakes" and "Not In Word List" appears.  
+
+![Game is ready to play](assets/images/Screenshot 2023-01-08 at 10.43.02 AM.png)
+
+If you type a word that has none of the target-word's letters, the word stays on the board, if it does contain letters that are in the target word, they light-up green OR yellow. Green means the letters being typed are in the correct order of the target-word, and yellow means the letters are in the target-word, but not in the correct order.  
+![Showing highlighted letters from guessed word, that are in the target-word](assets/images/Screenshot 2023-01-08 at 10.49.08 AM.png)
+
+If you guess the target-word, the game ends, and "You Win" appears above the gameboard.  If you don't guess the target-word, the game ends and the target-word appears above the gameboard.
+
+![Game over](assets/images/Screenshot 2023-01-08 at 10.50.37 AM.png)
+
 
 ## Credits
 
 Sean Collins
+[iseanc@guthub.com](#iseanc@guthub.com)
 
 Shannon Alegre Puno
+[shannonpuno@github.com](#shannonpuno@github.com)
 
 Jacquelyn Pulliam
+[JacquieSue@github.com](#JacquieSue@github.com)
 
 Zack Levin
+[TheRealPlanZ@github.com](#TheRealPlanZ@github.com)
 
 ## License
 
 MIT License
+
 <!-- ## Badges
 
 ![badmath](https://img.shields.io/github/languages/top/lernantino/badmath)
