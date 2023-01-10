@@ -55,10 +55,10 @@ router.get('/dictionary/:value', async (req, res) => {
 // Load themes
 router.get('/theme', async (req, res) => {
   
-//   //Render the 'homepage' Handlebars.js template.
-//   res.render('homepage', {
-//     loggedIn: req.session.loggedIn,
-//   });
-// });
+  //Render the 'homepage' Handlebars.js template.
+  // res.render('homepage', {
+  //   loggedIn: req.session.loggedIn,
+  // });
+});
 
 module.exports = router;
