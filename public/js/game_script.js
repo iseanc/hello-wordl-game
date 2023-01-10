@@ -221,3 +221,7 @@ function danceTiles(tiles) {
     }, (index * DANCE_ANIMATION_DURATION) / 5);
   });
 }
+
+replayBtn.addEventListener("click", () => {
+  location.reload();
+});
