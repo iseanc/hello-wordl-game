@@ -9838,11 +9838,11 @@ const DANCE_ANIMATION_DURATION = 500;
 const keyboard = document.querySelector("[data-keyboard]");
 const alertContainer = document.querySelector("[data-alert-container]");
 const guessGrid = document.querySelector("[data-guess-grid]");
-// const offsetFromDate = new Date(2023, 0, 1);
-// const msOffset = Date.now() - offsetFromDate;
-// const dayOffset = msOffset / 1000 / 60 / 60 / 24;
-// const targetWord = targetWords[Math.random()];
 const targetWord = targetWords[Math.floor(Math.random() * targetWords.length)]
+const replayBtn = document.querySelector("[data-replay]");
+
+let winCount = localStorage.getItem("winCount");
+
 
 startInteraction();
 
@@ -9861,12 +9861,12 @@ function handleMouseClick(e) {
     pressKey(e.target.dataset.key);
     return;
   }
-
+  
   if (e.target.matches("[data-enter]")) {
     submitGuess();
     return;
   }
-
+  
   if (e.target.matches("[data-delete]")) {
     deleteKey();
     return;
@@ -10004,6 +10004,8 @@ function checkWinLose(guess, tiles) {
     showAlert("You Win", 5000);
     danceTiles(tiles);
     stopInteraction();
+    winCount ++;
+    document.getElementById("winCount").innerHTML = winCount;
     return;
   }
 
@@ -10028,3 +10030,11 @@ function danceTiles(tiles) {
     }, (index * DANCE_ANIMATION_DURATION) / 5);
   });
 }
+
+function resetGame () {
+}
+
+
+replayBtn.addEventListener("click", () => {
+  location.reload();
+});

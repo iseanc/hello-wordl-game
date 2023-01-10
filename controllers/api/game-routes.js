@@ -2,19 +2,12 @@ const router = require('express').Router();
 const sequelize = require('../../config/connection');
 const { Words, Dictionary, Theme } = require('../../models');
 
-// Load a random targetWord
+// Load the target word (player must guess)
 router.get('/my-word', async (req, res) => {
   try {
-
-    //  ??Get Words model length and pick a random id value to get
-
-    // Get associated target word along with it's associated theme
-    // const targetData = await Words.findByPk()
-    // const targetData = await Words.findOne({
-    //   order: [
-    //     Sequelize.fn( 'RAND' ),
-    //   ]
-    // });
+    // Get a random target word 
+    // TODO: add associated theme for theme-based play
+    
     let targetData = [];
     targetData = await Words.findOne({
       attributes: ['word'],
@@ -23,27 +16,44 @@ router.get('/my-word', async (req, res) => {
     });
     
     res.send(targetData);
-    // return targetData;
-    //Render the 'homepage' Handlebars.js template.
-    // res.render('homepage', {
-    //   loggedIn: req.session.loggedIn,
-    // });
+    
   } catch (err) {
     res.status(500).json(err);
   }
 });
 
 // Load the dictionary
-router.get('/my-dictionary', async (req, res) => {
+router.get('/dictionary/:value', async (req, res) => {
   
-  //Render the 'homepage' Handlebars.js template.
-  res.render('homepage', {
-    loggedIn: req.session.loggedIn,
-  });
+  // //Render the 'homepage' Handlebars.js template.
+  // res.render('homepage', {
+  //   loggedIn: req.session.loggedIn,
+  // });
+  try {
+    // Lookup guess value in the dictionary
+    
+    let dictionaryData = [];
+    dictionaryData = await Dictionary.findOne({
+      where: { word: req.params.value },
+      attributes: ['word'],
+      raw: true,
+    });
+    
+    if (dictionaryData === null) {
+      res.send(false);
+    } else {
+      res.send(true);
+    }
+    
+    // res.send(test);
+    
+  } catch (err) {
+    res.status(500).json(err);
+  }
 });
 
-// // Load themes
-// router.get('/my-theme', async (req, res) => {
+// Load themes
+router.get('/theme', async (req, res) => {
   
 //   //Render the 'homepage' Handlebars.js template.
 //   res.render('homepage', {
