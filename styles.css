@@ -13,6 +13,29 @@ body {
   font-size: clamp(.5rem, 2.5vmin, 1.5rem);
 }
 
+.win-counter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 1em;
+  color: white;
+  padding: .5em;
+  border-radius: .25em;
+  background-color: gray;
+}
+
+.replay {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 1em;
+  color: white;
+  padding: .5em;
+  border-radius: .25em;
+  background-color: gray;
+  cursor: pointer;
+}
+
 .keyboard {
   display: grid;
   grid-template-columns: repeat(20, minmax(auto, 1.25em));
