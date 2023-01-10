@@ -39,23 +39,24 @@ See the application running live here:
 
 `How does it work?`  After installing, the user will be directed to the Hello Wordl Game homepage where you see the game board, keyboard, and navigation links.  
 
-![Homepage](assets/images/Screenshot 2023-01-08 at 10.54.14 AM.png)
+![Homepage](assets/images/Screenshot%202023-01-08%20at%2010.54.14%20AM.png)
 
-Click 'Login', and you'll be promted to either signup or login.  
 
-![Login](assets/images/Screenshot 2023-01-08 at 10.41.44 AM.png)
+Click 'Login', and you'll be prompted to either signup or login.  
 
-Once the user data is entered, you'll be directed back to the homepage and you can now play the game. You have 6 chances to guess the 6-letter 'target-word' to win the game.  If you type a word that is not in the games dictionary, the gameboard "shakes" and "Not In Word List" appears.  
+![Login](assets/images/Screenshot%202023-01-08%20at%2010.41.44%20AM.png)
 
-![Game is ready to play](assets/images/Screenshot 2023-01-08 at 10.43.02 AM.png)
+Once the user data is entered, you'll be directed back to the homepage and you can now play the game. You have 6 chances to guess the 6-letter 'target-word' to win the game.  If you type a word that is not in the games dictionary, the gameboard "shakes" and "Not In Word List" appears. 
 
-If you type a word that has none of the target-word's letters, the word stays on the board, if it does contain letters that are in the target word, they light-up green OR yellow. Green means the letters being typed are in the correct order of the target-word, and yellow means the letters are in the target-word, but not in the correct order.  
-![Showing highlighted letters from guessed word, that are in the target-word](assets/images/Screenshot 2023-01-08 at 10.49.08 AM.png)
+![Game is ready to play](assets/images/Screenshot%202023-01-08%20at%2010.43.02%20AM.png)
+
+If you type a word that has none of the target-word's letters, the word stays on the board, if it does contain letters that are in the target word, they light-up green OR yellow. Green means the letters being typed are in the correct order of the target-word, and yellow means the letters are in the target-word, but not in the correct order.
+
+![Showing highlighted letters from guessed word, that are in the target-word](assets/images/Screenshot%202023-01-08%20at%2010.49.08%20AM.png)
 
 If you guess the target-word, the game ends, and "You Win" appears above the gameboard.  If you don't guess the target-word, the game ends and the target-word appears above the gameboard.
 
-![Game over](assets/images/Screenshot 2023-01-08 at 10.50.37 AM.png)
-
+![Game over](assets/images/Screenshot%202023-01-08%20at%2010.50.37%20AM.png)
 
 ## Credits
 
