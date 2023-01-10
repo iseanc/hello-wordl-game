@@ -60,6 +60,8 @@ If you guess the target-word, the game ends, and "You Win" appears above the gam
 
 ## Credits
 
+Original Wordle Clone source code: [Edopedia.com/blog/wordle-clone-javascript](https://www.edopedia.com/blog/wordle-clone-javascript/)
+
 Sean Collins
 [iseanc@guthub.com](#iseanc@guthub.com)
 
