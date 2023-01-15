@@ -1,8 +1,8 @@
 const router = require('express').Router();
 const { Words, Dictionary, Theme } = require('../../models');
 
-// Load the targetWord
-router.get('/target-word', async (req, res) => {
+// Load the secretWord
+router.get('/secret-word', async (req, res) => {
   
   //Render the 'homepage' Handlebars.js template.
   res.render('homepage', {

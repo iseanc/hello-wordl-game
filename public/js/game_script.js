@@ -1,15 +1,12 @@
 const WORD_LENGTH = 6;
-const FLIP_ANIMATION_DURATION = 500;
-const DANCE_ANIMATION_DURATION = 500;
+const SPIN_ANIMATION_PERIOD = 500;
+const BOUNCE_ANIMATION_PERIOD = 500;
 const keyboard = document.querySelector("[data-keyboard]");
-const alertContainer = document.querySelector("[data-alert-container]");
-const guessGrid = document.querySelector("[data-guess-grid]");
-// const offsetFromDate = new Date(2023, 0, 1);
-// const msOffset = Date.now() - offsetFromDate;
-// const dayOffset = msOffset / 1000 / 60 / 60 / 24;
+const alertBox = document.querySelector("[data-alert-box]");
+const guessMatrix = document.querySelector("[data-guess-matrix]");
 
 // variable to store game solution word
-let targetWord;
+let secretWord;
 
 // request a solution word from the server
 const fetchWord = fetch('/api/game/my-word');
@@ -22,29 +19,29 @@ fetchWord.then(response => {
   return response.json();
 })
 .then((data) => {
-  targetWord = data.word;
-  startInteraction(data.word);
+  secretWord = data.word;
+  startGamePlay(data.word);
 })
 
-function startInteraction() {
-  console.log('startInteraction targetWord = ', targetWord);
-  document.addEventListener("click", handleMouseClick);
-  document.addEventListener("keydown", handleKeyPress);
+function startGamePlay() {
+  console.log('startGamePlay secretWord = ', secretWord);
+  document.addEventListener("click", handleMouse);
+  document.addEventListener("keydown", handleKeyboard);
 }
 
-function stopInteraction() {
-  document.removeEventListener("click", handleMouseClick);
-  document.removeEventListener("keydown", handleKeyPress);
+function stopGamePlay() {
+  document.removeEventListener("click", handleMouse);
+  document.removeEventListener("keydown", handleKeyboard);
 }
 
-function handleMouseClick(e) {
+function handleMouse(e) {
   if (e.target.matches("[data-key]")) {
     pressKey(e.target.dataset.key);
     return;
   }
 
   if (e.target.matches("[data-enter]")) {
-    submitGuess();
+    sendGuess();
     return;
   }
 
@@ -54,9 +51,9 @@ function handleMouseClick(e) {
   }
 }
 
-function handleKeyPress(e) {
+function handleKeyboard(e) {
   if (e.key === "Enter") {
-    submitGuess(targetWord);
+    sendGuess(secretWord);
     return;
   }
 
@@ -72,33 +69,33 @@ function handleKeyPress(e) {
 }
 
 function pressKey(key) {
-  const activeTiles = getActiveTiles();
-  if (activeTiles.length >= WORD_LENGTH) return;
-  const nextTile = guessGrid.querySelector(":not([data-letter])");
-  nextTile.dataset.letter = key.toLowerCase();
-  nextTile.textContent = key;
-  nextTile.dataset.state = "active";
+  const activeBlocks = getActiveBlocks();
+  if (activeBlocks.length >= WORD_LENGTH) return;
+  const nextBlock = guessMatrix.querySelector(":not([data-letter])");
+  nextBlock.dataset.letter = key.toLowerCase();
+  nextBlock.textContent = key;
+  nextBlock.dataset.state = "active";
 }
 
 function deleteKey() {
-  const activeTiles = getActiveTiles();
-  const lastTile = activeTiles[activeTiles.length - 1];
-  if (lastTile == null) return;
-  lastTile.textContent = "";
-  delete lastTile.dataset.state;
-  delete lastTile.dataset.letter;
+  const activeBlocks = getActiveBlocks();
+  const lastBlock = activeBlocks[activeBlocks.length - 1];
+  if (lastBlock == null) return;
+  lastBlock.textContent = "";
+  delete lastBlock.dataset.state;
+  delete lastBlock.dataset.letter;
 }
 
-function submitGuess() {
-  const activeTiles = [...getActiveTiles()];
-  if (activeTiles.length !== WORD_LENGTH) {
-    showAlert("Not enough letters");
-    shakeTiles(activeTiles);
+function sendGuess() {
+  const activeBlocks = [...getActiveBlocks()];
+  if (activeBlocks.length !== WORD_LENGTH) {
+    showAlert("Word not long enough");
+    shakeBlocks(activeBlocks);
     return;
   }
 
-  const guess = activeTiles.reduce((word, tile) => {
-    return word + tile.dataset.letter;
+  const guess = activeBlocks.reduce((word, block) => {
+    return word + block.dataset.letter;
   }, "");
 
   // Request word matching "guess" from dictionary on server
@@ -113,44 +110,44 @@ function submitGuess() {
   .then((data) => {
     // actions if dictionary lookup returns "false"
     if (data === false) {
-      showAlert("Not in word list");
-      shakeTiles(activeTiles);
+      showAlert("Not in dictionary");
+      shakeBlocks(activeBlocks);
       return;
     }
     // execute these actions no matter what
-    stopInteraction();
-    activeTiles.forEach((...params) => flipTile(...params, guess));
+    stopGamePlay();
+    activeBlocks.forEach((...params) => spinBlock(...params, guess));
   })
 }
 
-function flipTile(tile, index, array, guess) {
-  const letter = tile.dataset.letter;
+function spinBlock(block, index, array, guess) {
+  const letter = block.dataset.letter;
   const key = keyboard.querySelector(`[data-key="${letter}"i]`);
   setTimeout(() => {
-    tile.classList.add("flip");
-  }, (index * FLIP_ANIMATION_DURATION) / 2);
+    block.classList.add("spin");
+  }, (index * SPIN_ANIMATION_PERIOD) / 2);
 
-  tile.addEventListener(
+  block.addEventListener(
     "transitionend",
     () => {
-      tile.classList.remove("flip");
-      if (targetWord[index] === letter) {
-        tile.dataset.state = "correct";
+      block.classList.remove("spin");
+      if (secretWord[index] === letter) {
+        block.dataset.state = "correct";
         key.classList.add("correct");
-      } else if (targetWord.includes(letter)) {
-        tile.dataset.state = "wrong-location";
-        key.classList.add("wrong-location");
+      } else if (secretWord.includes(letter)) {
+        block.dataset.state = "wrong-spot";
+        key.classList.add("wrong-spot");
       } else {
-        tile.dataset.state = "wrong";
+        block.dataset.state = "wrong";
         key.classList.add("wrong");
       }
 
       if (index === array.length - 1) {
-        tile.addEventListener(
+        block.addEventListener(
           "transitionend",
           () => {
-            startInteraction();
-            checkWinLose(guess, array);
+            startGamePlay();
+            checkCorrect(guess, array);
           },
           { once: true }
         );
@@ -160,15 +157,15 @@ function flipTile(tile, index, array, guess) {
   );
 }
 
-function getActiveTiles() {
-  return guessGrid.querySelectorAll('[data-state="active"]');
+function getActiveBlocks() {
+  return guessMatrix.querySelectorAll('[data-state="active"]');
 }
 
 function showAlert(message, duration = 1000) {
   const alert = document.createElement("div");
   alert.textContent = message;
   alert.classList.add("alert");
-  alertContainer.prepend(alert);
+  alertBox.prepend(alert);
   if (duration == null) return;
 
   setTimeout(() => {
@@ -179,46 +176,46 @@ function showAlert(message, duration = 1000) {
   }, duration);
 }
 
-function shakeTiles(tiles) {
-  tiles.forEach((tile) => {
-    tile.classList.add("shake");
-    tile.addEventListener(
+function shakeBlocks(blocks) {
+  blocks.forEach((block) => {
+    block.classList.add("shake");
+    block.addEventListener(
       "animationend",
       () => {
-        tile.classList.remove("shake");
+        block.classList.remove("shake");
       },
       { once: true }
     );
   });
 }
 
-function checkWinLose(guess, tiles) {
-  if (guess === targetWord) {
+function checkCorrect(guess, blocks) {
+  if (guess === secretWord) {
     showAlert("You Win", 5000);
-    danceTiles(tiles);
-    stopInteraction();
+    bounceBlocks(blocks);
+    stopGamePlay();
     return;
   }
 
-  const remainingTiles = guessGrid.querySelectorAll(":not([data-letter])");
-  if (remainingTiles.length === 0) {
-    showAlert(targetWord.toUpperCase(), null);
-    stopInteraction();
+  const remainingBlocks = guessMatrix.querySelectorAll(":not([data-letter])");
+  if (remainingBlocks.length === 0) {
+    showAlert(secretWord.toUpperCase(), null);
+    stopGamePlay();
   }
 }
 
-function danceTiles(tiles) {
-  tiles.forEach((tile, index) => {
+function bounceBlocks(blocks) {
+  blocks.forEach((block, index) => {
     setTimeout(() => {
-      tile.classList.add("dance");
-      tile.addEventListener(
+      block.classList.add("bounce");
+      block.addEventListener(
         "animationend",
         () => {
-          tile.classList.remove("dance");
+          block.classList.remove("bounce");
         },
         { once: true }
       );
-    }, (index * DANCE_ANIMATION_DURATION) / 5);
+    }, (index * BOUNCE_ANIMATION_PERIOD) / 5);
   });
 }
 

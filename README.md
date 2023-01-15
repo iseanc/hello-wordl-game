@@ -46,15 +46,15 @@ Click 'Login', and you'll be prompted to either signup or login.
 
 ![Login](assets/images/Screenshot%202023-01-08%20at%2010.41.44%20AM.png)
 
-Once the user data is entered, you'll be directed back to the homepage and you can now play the game. You have 6 chances to guess the 6-letter 'target-word' to win the game.  If you type a word that is not in the games dictionary, the gameboard "shakes" and "Not In Word List" appears. 
+Once the user data is entered, you'll be directed back to the homepage and you can now play the game. You have 6 chances to guess the 6-letter 'secret-word' to win the game.  If you type a word that is not in the games dictionary, the gameboard "shakes" and "Not In Word List" appears. 
 
 ![Game is ready to play](assets/images/Screenshot%202023-01-08%20at%2010.43.02%20AM.png)
 
-If you type a word that has none of the target-word's letters, the word stays on the board, if it does contain letters that are in the target word, they light-up green OR yellow. Green means the letters being typed are in the correct order of the target-word, and yellow means the letters are in the target-word, but not in the correct order.
+If you type a word that has none of the secret-word's letters, the word stays on the board, if it does contain letters that are in the target word, they light-up green OR yellow. Green means the letters being typed are in the correct order of the secret-word, and yellow means the letters are in the secret-word, but not in the correct order.
 
-![Showing highlighted letters from guessed word, that are in the target-word](assets/images/Screenshot%202023-01-08%20at%2010.49.08%20AM.png)
+![Showing highlighted letters from guessed word, that are in the secret-word](assets/images/Screenshot%202023-01-08%20at%2010.49.08%20AM.png)
 
-If you guess the target-word, the game ends, and "You Win" appears above the gameboard.  If you don't guess the target-word, the game ends and the target-word appears above the gameboard.
+If you guess the secret-word, the game ends, and "You Win" appears above the gameboard.  If you don't guess the secret-word, the game ends and the secret-word appears above the gameboard.
 
 ![Game over](assets/images/Screenshot%202023-01-08%20at%2010.50.37%20AM.png)
 
