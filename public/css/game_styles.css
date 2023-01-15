@@ -4,7 +4,7 @@
 }
 
 body {
-  background-color: hsl(240, 3%, 7%);
+  background-color: hsl(240, 5%, 10%);
   display: flex;
   flex-direction: column;
   min-height: 100vh;
@@ -44,7 +44,7 @@ body {
   background-color: hsl(
     var(--hue, 200),
     var(--saturation, 1%),
-    calc(var(--lightness-offset, 0%) + var(--lightness, 51%))
+    calc(var(--lightness-offset, 0%) + var(--lightness, 50%))
   );
   color: white;
   fill: white;
@@ -68,22 +68,22 @@ body {
 }
 
 .key.wrong {
-  --lightness: 23%;
+  --lightness: 25%;
 }
 
-.key.wrong-location {
+.key.wrong-spot {
   --hue: 49;
-  --saturation: 51%;
-  --lightness: 47%;
+  --saturation: 50%;
+  --lightness: 50%;
 }
 
 .key.correct {
   --hue: 115;
-  --saturation: 29%;
-  --lightness: 43%;
+  --saturation: 30%;
+  --lightness: 45%;
 }
 
-.guess-grid {
+.guess-matrix {
   display: grid;
   justify-content: center;
   align-content: center;
@@ -94,10 +94,10 @@ body {
   margin-bottom: 1em;
 }
 
-.tile {
+.block {
   font-size: 2em;
   color: white;
-  border: .05em solid hsl(240, 2%, 23%);
+  border: .05em solid hsl(240, 5%, 25%);
   text-transform: uppercase;
   font-weight: bold;
   display: flex;
@@ -107,34 +107,34 @@ body {
   transition: transform 250ms linear;
 }
 
-.tile[data-state="active"] {
-  border-color: hsl(200, 1%, 34%);
+.block[data-state="active"] {
+  border-color: hsl(200, 1%, 40%);
 }
 
-.tile[data-state="wrong"] {
+.block[data-state="wrong"] {
   border: none;
-  background-color: hsl(240, 2%, 23%);
+  background-color: hsl(240, 5%, 25%);
 }
 
-.tile[data-state="wrong-location"] {
+.block[data-state="wrong-spot"] {
   border: none;
-  background-color: hsl(49, 51%, 47%);
+  background-color: hsl(49, 50%, 50%);
 }
 
-.tile[data-state="correct"] {
+.block[data-state="correct"] {
   border: none;
-  background-color: hsl(115, 29%, 43%);
+  background-color: hsl(120, 30%, 45%);
 }
 
-.tile.shake {
+.block.shake {
   animation: shake 250ms ease-in-out;
 }
 
-.tile.dance {
-  animation: dance 500ms ease-in-out;
+.block.bounce {
+  animation: bounce 500ms ease-in-out;
 }
 
-.tile.flip {
+.block.spin {
   transform: rotateX(90deg);
 }
 
@@ -150,47 +150,21 @@ body {
   50% {
     transform: translateX(-7.5%);
   }
-
-  70% {
-    transform: translateX(7.5%);
-  }
-
-  90% {
-    transform: translateX(-5%);
-  }
-
-  100% {
-    transform: translateX(0);
-  }
 }
 
-@keyframes dance {
+@keyframes bounce {
   20% {
     transform: translateY(-50%);
   }  
-
-  40% {
-    transform: translateY(5%);
-  }  
-
-  60% {
+  50% {
     transform: translateY(-25%);
   }  
-
-  80% {
-    transform: translateY(2.5%);
-  }  
-
-  90% {
-    transform: translateY(-5%);
-  }  
-
   100% {
     transform: translateY(0);
   }
 }
 
-.alert-container {
+.alert-box {
   position: fixed;
   top: 10vh;
   left: 50vw;
@@ -203,7 +177,7 @@ body {
 
 .alert {
   pointer-events: none;
-  background-color: hsl(204, 7%, 85%);
+  background-color: hsl(210, 10%, 90%);
   padding: .75em;
   border-radius: .25em;
   opacity: 1;
