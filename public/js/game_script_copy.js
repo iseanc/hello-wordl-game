@@ -6,6 +6,7 @@ const fetchWord = fetch('/api/game/my-word');
 fetchWord.then(response => response.json())
 .then(data => {
   targetWord = data.word;
+  console.log(targetWord);
 })
 
 // Get the elements from the HTML
