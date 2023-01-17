@@ -1,13 +1,18 @@
 // variable to store game solution word
-let targetWord = "banana";
+let targetWord;
 
-// request a solution word from the server
+
+// request a solution word from the server (WIP)
 const fetchWord = fetch('/api/game/my-word');
 fetchWord.then(response => response.json())
 .then(data => {
   targetWord = data.word;
   console.log(targetWord);
 })
+.catch(err => {
+  console.log(err);
+});
+
 
 // Get the elements from the HTML
 var submitForm = document.querySelector(".submitForm");
@@ -87,7 +92,11 @@ resetButton.addEventListener("click", function () {
     letterDivs[i].textContent = "";
   }
   // Randomly choose a new word (needs to be figured out)
-  // word = words[Math.floor(Math.random() * words.length)];
+  fetchWord.then(response => response.json())
+  .then(data => {
+      targetWord = data.word;
+      console.log(targetWord);
+  });
 
   // Clear the letter divs and enable the input
   for (var i = 0; i < letterDivs.length; i++) {
